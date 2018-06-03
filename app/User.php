@@ -29,8 +29,5 @@ class User extends Authenticatable
 
     public $timestamps = true;
 
-    public function Comment()
-    {
-        return $this->HaMany('App/Comment','user_id');
-    }
+
 }

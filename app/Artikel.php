@@ -14,9 +14,4 @@ class Artikel extends Model
     {
         return $this->belongsTo('App/Kategori','kategori_id')
     }
-
-    public function Comment()
-    {
-        return $this->HasMany('App/Comment','artikel_id');
-    }
 }

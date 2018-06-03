@@ -14,7 +14,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        //
+        $kategori= Kategori::all();
+        return view('Kategori.index',compact('kategori'));
     }
 
     /**
@@ -24,7 +25,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('Kategori.create');
     }
 
     /**
@@ -35,7 +36,18 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'Tempat_Wisata' => 'required',
+            'tips_wisata' => 'required',
+            'about'=>'required'
+            ]);
+            $kategori = new Kategori;
+            $kategori->Tempat_Wisata = $request->Tempat_Wisata;
+            $kategori->tips_wisata = $request->tips_wisata;
+            $kategori->about = $request->about;
+            $kategori->save();
+            
+            return redirect()->route('kategori.index');
     }
 
     /**
